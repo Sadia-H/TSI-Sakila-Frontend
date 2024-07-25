@@ -8,28 +8,6 @@ export default function FilmById() {
     const [loading, setLoading] = useState(true);
     const filmId = 5;
 
-    // useEffect(() => {
-    //     const fetchFilm = async () => {
-    //         try {
-    //             const response = await fetch(`http://localhost:8080/partialFilms/${filmId}`);
-    //             if (response.ok) {
-    //                 const data: Film = await response.json();
-    //                 setFilm(data);
-    //             } else {
-    //                 console.error("Failed to fetch film. Status:", response.status);
-    //                 setFilm(null);
-    //             }
-    //         } catch (error) {
-    //             console.error("Error fetching film:", error);
-    //             setFilm(null);
-    //         } finally {
-    //             setLoading(false); 
-    //         }
-    //     };
-
-    //     fetchFilm();
-    // }, [filmId]);
-
     useEffect(() => {
         const fetchFilm = () => {
             fetch(`http://localhost:8080/partialFilms/${filmId}`)
