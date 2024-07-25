@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import {Film} from "../Types/filmTypes";
+import {Film} from "../Types/types";
 import { useParams } from "react-router-dom";
 
 
@@ -8,7 +8,6 @@ export default function FilmById() {
     const {filmId} = useParams<{filmId: string}>();
     const [film, setFilm] = useState<Film | null>(null); 
     const [loading, setLoading] = useState(true);
-    //const filmId = 5;
 
     useEffect(() => {
         if (!filmId) return;

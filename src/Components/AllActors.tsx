@@ -1,12 +1,9 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react";
+import { Actor } from "../Types/types";
 
 
 export default function AllActors () {
-
-// useEffect(() => {
-//     fetch(http://localhos)
-
-// })
+    const [actors, setActors] = useState<Actor[]>([]);
 
     return (
         <div>

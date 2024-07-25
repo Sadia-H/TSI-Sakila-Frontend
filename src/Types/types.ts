@@ -4,6 +4,8 @@ export interface Film {
     releaseYear: number;
 }
 
-export interface FilmResponse {
-    films: Film[];
+export interface Actor {
+    id: number;
+    firstName: string;
+    lastName: string;
 }

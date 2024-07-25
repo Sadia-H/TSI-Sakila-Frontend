@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Film } from "../Types/filmTypes";
+import { Film } from "../Types/types";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
