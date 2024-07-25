@@ -1,11 +1,8 @@
 import '../CSS/Navbar.css';
 import { Link } from 'react-router-dom';
 
-interface NavbarProps {
-    filmId?: string;
-}
 
-export default function Navbar({filmId}: NavbarProps) {
+export default function Navbar () {
     return (
         <div>
           <div className="navbarContainer">
@@ -17,7 +14,6 @@ export default function Navbar({filmId}: NavbarProps) {
             </div>
 
             <div className="webPages">
-                <Link to ={`/film/${filmId}`}>Film by Id</Link>
                 <Link to ="/all-films">All Films</Link>
             </div>
           </div>

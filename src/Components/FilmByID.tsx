@@ -44,8 +44,7 @@ export default function FilmById() {
 
     return (
         <div>
-            <Navbar filmId={filmId}/>
-            {/* {film ? <h1>{film.title}</h1> : <p>Film not found</p>} */}
+            <Navbar />
             {film ? (
                 <div>
                     <h1>{film.title}</h1>
