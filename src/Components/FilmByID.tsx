@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import Film from "../Types/filmTypes";
 
-interface Film {
-    title: string;
-}
 
 export default function FilmById() {
     const [film, setFilm] = useState<Film | null>(null); 
