@@ -39,6 +39,10 @@ export default function AllFilms() {
                     <div key={film.filmId} className="filmBlock">
                         <Link to={`/film/${film.filmId}`}>
                             {film.title}
+                            <p>
+                            A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies.
+                            </p>
+                            <p>Release Year: {film.releaseYear}</p>
                         </Link>
                     </div>
                 ))}
