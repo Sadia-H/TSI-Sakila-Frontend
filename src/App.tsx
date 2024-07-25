@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AllFilms from './Components/AllFilms'
 import FilmById from './Components/FilmByID'
 import AllActors from './Components/AllActors'
+import ActorById from './Components/ActorById'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path='/all-films' element = {<AllFilms/>} />
         <Route path='/film/:filmId' element={<FilmById/>} />
         <Route path='/all-actors' element = {<AllActors/>} />
+        <Route path='/actor/:id' element={<ActorById/>} />
 
       </Routes>
 

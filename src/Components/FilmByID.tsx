@@ -10,8 +10,6 @@ export default function FilmById() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (!filmId) return;
-
         const fetchFilm = () => {
             fetch(`http://localhost:8080/partialFilms/${filmId}`)
                 .then(response => {

@@ -1,0 +1,56 @@
+import { useParams } from "react-router-dom";
+import { Actor } from "../Types/types";
+import { useState, useEffect } from "react";
+import Navbar from "./Navbar";
+
+export default function ActorById () {
+    const {id} = useParams<{id: string}>();
+    const [actor, setActor] = useState<Actor | null>(null);
+    const[loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchActor = () => {
+            fetch(`http://localhost:8080/actor-responses/${id}`)
+            .then(response => {
+                if(response.ok) {
+                    return response.json()
+                } else {
+                    console.log("Failed to fetch actor: ", response.status);
+                    return null;
+                }
+            })
+            .then((data: Actor | null) => {
+                setActor(data);
+            })
+            .catch(error => {
+                console.log("Error fetching acotr: ", error);
+                setActor(null);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
+            
+        };
+        fetchActor();
+    }, [id]);
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
+    return (
+        <div>
+            <Navbar/>
+            {actor ? (
+                <div>
+                    <h1>{actor.firstName}</h1>
+                    <p>{actor.lastName}</p>
+                </div>
+            ) : (
+                <p>Actor not found</p>
+            
+            )}
+        </div>
+    )
+
+}
