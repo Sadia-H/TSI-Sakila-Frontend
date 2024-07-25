@@ -7,17 +7,12 @@ interface Film {
 export default function FilmById() {
     const [film, setFilm] = useState<Film | null>(null); 
     const [loading, setLoading] = useState(true);
-    const filmId = 1;
+    const filmId = 5;
 
     useEffect(() => {
         const fetchFilm = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/partialFilms/${filmId}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
+                const response = await fetch(`http://localhost:8080/partialFilms/${filmId}`);
                 if (response.ok) {
                     const data: Film = await response.json();
                     setFilm(data);
@@ -42,13 +37,7 @@ export default function FilmById() {
 
     return (
         <div>
-            {film ? (
-                <div>
-                    <h1>{film.title}</h1>
-                </div>
-            ) : (
-                <div>Film not found</div>
-            )}
+            {film ? <h1>{film.title}</h1> : <p>Film not found</p>}
         </div>
     );
 }

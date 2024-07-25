@@ -5,7 +5,7 @@ import FilmById from './Components/FilmByID'
 import Navbar from './Components/Navbar'
 
 function App() {
-  const filmId = 1; 
+  // const filmId = 1; 
   return (
     <>
       {/* <h1>hello</h1> */}
