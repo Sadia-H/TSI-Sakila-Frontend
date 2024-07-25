@@ -1,0 +1,18 @@
+.filmContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.filmBlock {
+    flex: 1 1 200px;
+    background-color: rgba(114, 128, 128, 0.082);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.filmBlock:hover {
+    transform: scale(1.05); /* hovering enlarges block */
+}

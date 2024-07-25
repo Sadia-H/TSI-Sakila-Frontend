@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Film } from "../Types/types";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import '../CSS/AllFilms.css';
 
 export default function AllFilms() {
     const [films, setFilms] = useState<Film[]>([]);
@@ -35,7 +36,7 @@ export default function AllFilms() {
             <h1>All Films</h1>
             <div className="filmContainer">
                 {films.map(film => (
-                    <div key={film.filmId}>
+                    <div key={film.filmId} className="filmBlock">
                         <Link to={`/film/${film.filmId}`}>
                             {film.title}
                         </Link>
