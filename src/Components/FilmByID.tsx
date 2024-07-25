@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import {Film} from "../Types/types";
+import { Actor } from "../Types/types";
+import { Language } from "../Types/types";
 import { useParams } from "react-router-dom";
 
 
@@ -39,7 +41,22 @@ export default function FilmById() {
             {film ? (
                 <div>
                     <h1>{film.title}</h1>
-                    <p>{film.releaseYear}</p>
+                    <p>{film.description}</p>
+                    <p>Release Year: {film.releaseYear}</p>
+                   
+                    <p>{film.language.name}</p>
+                    <p>{film.length} Minutes</p>
+                    <p>{film.rating}</p>
+                    <p>{film.specialFeatures}</p>
+                    <div className = "cast">
+                        {film.cast.map((actor) => (
+                        <div key={actor.id}>
+                            {actor.firstName} {actor.lastName}
+                        </div>
+                        ))}
+                    </div>
+                    
+                    
                 </div>
             ) : (
                 <p>Film not found</p>

@@ -13,6 +13,6 @@
     text-align: center;
 }
 
-.filmActorlock:hover {
+.filmActorBlock:hover {
     transform: scale(1.05); /* hovering enlarges block */
 }
