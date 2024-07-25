@@ -38,7 +38,14 @@ export default function ActorById () {
             {actor ? (
                 <div>
                     <h1>{actor.firstName}</h1>
-                    <p>{actor.lastName}</p>
+                    <h1>{actor.lastName}</h1>
+                    <div>
+                        {actor.films.map((film) => (
+                            <div key={film.filmId}>
+                                {film.title}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             ) : (
                 <p>Actor not found</p>
