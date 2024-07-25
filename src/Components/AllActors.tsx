@@ -21,11 +21,6 @@ export default function AllActors () {
             .then((data: Actor[]) => {
                 console.log(data);
                 setActors(data.splice(0,20));
-            })
-            .catch(error => {
-                console.log("Error fetching actors: ", error);
-            })
-            .finally(() => {
                 setLoading(false);
             })
     }, [])

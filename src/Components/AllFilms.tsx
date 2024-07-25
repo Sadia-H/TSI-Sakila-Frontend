@@ -21,13 +21,8 @@ export default function AllFilms() {
             .then((data: Film[]) => {
                 console.log(data);
                 setFilms(data.splice(0, 20));
-            })
-            .catch(error => {
-                console.log("Error fetching list of films: ", error);
-            })
-            .finally(() => {
                 setLoading(false);
-            });
+            })
     }, []);
     
     if (loading) {

@@ -22,14 +22,8 @@ export default function FilmById() {
                 })
                 .then((data: Film | null) => {
                     setFilm(data);
-                })
-                .catch(error => {
-                    console.error("Error fetching film:", error);
-                    setFilm(null);
-                })
-                .finally(() => {
                     setLoading(false);
-                });
+                })
         };
 
         fetchFilm();

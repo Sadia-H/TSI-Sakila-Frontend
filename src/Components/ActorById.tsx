@@ -21,12 +21,6 @@ export default function ActorById () {
             })
             .then((data: Actor | null) => {
                 setActor(data);
-            })
-            .catch(error => {
-                console.log("Error fetching acotr: ", error);
-                setActor(null);
-            })
-            .finally(() => {
                 setLoading(false);
             })
             
