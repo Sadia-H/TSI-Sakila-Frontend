@@ -34,9 +34,9 @@ export default function AllFilms() {
         <div>
             <Navbar/>
             <h1>All Films</h1>
-            <div className="filmContainer">
+            <div className="filmActorContainer">
                 {films.map(film => (
-                    <div key={film.filmId} className="filmBlock">
+                    <div key={film.filmId} className="filmActorBlock">
                         <Link to={`/film/${film.filmId}`}>
                             {film.title}
                             <p>

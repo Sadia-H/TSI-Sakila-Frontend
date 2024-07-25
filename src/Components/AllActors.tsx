@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { act, useEffect, useState } from "react";
 import { Actor } from "../Types/types";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
+import '../CSS/AllFilms.css';
 
 
 export default function AllActors () {
@@ -34,11 +35,11 @@ export default function AllActors () {
         <div>
             <Navbar/>
             <h1>All Actors</h1>
-            <div className="actorContainer">
+            <div className="filmActorContainer">
                 {actors.map(actor => (
-                    <div key={actor.id}>
+                    <div key={actor.id} className="filmActorBlock">
                         <Link to={`/actor/${actor.id}`}>
-                            {actor.firstName}
+                            {actor.firstName} {actor.lastName}
                         </Link>
                     </div>
                 ))}
