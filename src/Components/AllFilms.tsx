@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Film } from "../Types/filmTypes";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 export default function AllFilms() {
     const [films, setFilms] = useState<Film[]>([]);
     const [loading, setLoading] = useState(true);
+    
 
     useEffect(() => {
         fetch("http://localhost:8080/partialFilms")
@@ -37,7 +39,11 @@ export default function AllFilms() {
             <h1>All Films</h1>
             <ul>
                 {films.map(film => (
-                    <li key={film.id}>{film.title}</li>
+                    <li key={film.id}>
+                        <Link to={`/film/${film.id}`}>
+                            {film.title}
+                        </Link>
+                    </li>
                 ))}
             </ul>
         </div>
