@@ -8,7 +8,7 @@ function App() {
   // const filmId = 1; 
   return (
     <>
-      {/* <h1>hello</h1> */}
+      <h1>hello</h1>
       {/* <Navbar/> */}
       {/* <AllActors/> */}
       {/* <AllFilms/> */}
