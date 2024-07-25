@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Film } from "../Types/filmTypes";
+import Navbar from "./Navbar";
 
 export default function AllFilms() {
     const [films, setFilms] = useState<Film[]>([]);
@@ -16,11 +17,7 @@ export default function AllFilms() {
                 }
             })
             .then((data: Film[]) => {
-                if (Array.isArray(data)) {
-                    setFilms(data.splice(0,20));
-                } else {
-                    console.log("Unexpected response format:", data);
-                }
+                setFilms(data.splice(0, 20));
             })
             .catch(error => {
                 console.log("Error fetching list of films: ", error);
@@ -29,13 +26,14 @@ export default function AllFilms() {
                 setLoading(false);
             });
     }, []);
-
+    
     if (loading) {
         return <div>Loading...</div>;
     }
 
     return (
         <div>
+            <Navbar/>
             <h1>All Films</h1>
             <ul>
                 {films.map(film => (
