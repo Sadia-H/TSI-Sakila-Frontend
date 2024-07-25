@@ -38,15 +38,15 @@ export default function AllFilms() {
         <div>
             <Navbar/>
             <h1>All Films</h1>
-            <ul>
+            <div className="filmContainer">
                 {films.map(film => (
-                    <li key={film.filmId}>
+                    <div key={film.filmId}>
                         <Link to={`/film/${film.filmId}`}>
                             {film.title}
                         </Link>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
