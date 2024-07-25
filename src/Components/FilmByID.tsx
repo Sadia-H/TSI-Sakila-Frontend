@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import Film from "../Types/filmTypes";
+import {Film} from "../Types/filmTypes";
 
 
 export default function FilmById() {
@@ -8,23 +8,49 @@ export default function FilmById() {
     const [loading, setLoading] = useState(true);
     const filmId = 5;
 
+    // useEffect(() => {
+    //     const fetchFilm = async () => {
+    //         try {
+    //             const response = await fetch(`http://localhost:8080/partialFilms/${filmId}`);
+    //             if (response.ok) {
+    //                 const data: Film = await response.json();
+    //                 setFilm(data);
+    //             } else {
+    //                 console.error("Failed to fetch film. Status:", response.status);
+    //                 setFilm(null);
+    //             }
+    //         } catch (error) {
+    //             console.error("Error fetching film:", error);
+    //             setFilm(null);
+    //         } finally {
+    //             setLoading(false); 
+    //         }
+    //     };
+
+    //     fetchFilm();
+    // }, [filmId]);
+
     useEffect(() => {
-        const fetchFilm = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/partialFilms/${filmId}`);
-                if (response.ok) {
-                    const data: Film = await response.json();
+        const fetchFilm = () => {
+            fetch(`http://localhost:8080/partialFilms/${filmId}`)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        console.error("Failed to fetch film. Status:", response.status);
+                        return null; // Return null if response is not ok
+                    }
+                })
+                .then((data: Film | null) => {
                     setFilm(data);
-                } else {
-                    console.error("Failed to fetch film. Status:", response.status);
+                })
+                .catch(error => {
+                    console.error("Error fetching film:", error);
                     setFilm(null);
-                }
-            } catch (error) {
-                console.error("Error fetching film:", error);
-                setFilm(null);
-            } finally {
-                setLoading(false); 
-            }
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
         };
 
         fetchFilm();
