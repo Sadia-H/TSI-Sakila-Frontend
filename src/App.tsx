@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/all-films' element = {<AllFilms/>} />
-        <Route path='/film-by-id' element={<FilmById/>} />
+        <Route path='/film/:filmId' element={<FilmById/>} />
 
       </Routes>
 

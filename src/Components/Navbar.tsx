@@ -1,7 +1,11 @@
 import '../CSS/Navbar.css';
+import { Link } from 'react-router-dom';
 
+interface NavbarProps {
+    filmId?: string;
+}
 
-export default function Navbar() {
+export default function Navbar({filmId}: NavbarProps) {
     return (
         <div>
           <div className="navbarContainer">
@@ -13,11 +17,12 @@ export default function Navbar() {
             </div>
 
             <div className="webPages">
-                <a href="/film-by-id">Film by Id</a>
-                <a href="/all-films">All Films</a>
+                <Link to ={`/film/${filmId}`}>Film by Id</Link>
+                <Link to ="/all-films">All Films</Link>
             </div>
           </div>
         </div>
 
-    )   
+    );
 }
+

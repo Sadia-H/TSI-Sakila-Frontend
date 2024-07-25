@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import {Film} from "../Types/filmTypes";
+import { useParams } from "react-router-dom";
 
 
 export default function FilmById() {
+    const {filmId} = useParams<{filmId: string}>();
     const [film, setFilm] = useState<Film | null>(null); 
     const [loading, setLoading] = useState(true);
-    const filmId = 5;
+    //const filmId = 5;
 
     useEffect(() => {
+        if (!filmId) return;
+
         const fetchFilm = () => {
             fetch(`http://localhost:8080/partialFilms/${filmId}`)
                 .then(response => {
@@ -16,7 +20,7 @@ export default function FilmById() {
                         return response.json();
                     } else {
                         console.error("Failed to fetch film. Status:", response.status);
-                        return null; // Return null if response is not ok
+                        return null; 
                     }
                 })
                 .then((data: Film | null) => {
@@ -40,8 +44,16 @@ export default function FilmById() {
 
     return (
         <div>
-            <Navbar/>
-            {film ? <h1>{film.title}</h1> : <p>Film not found</p>}
+            <Navbar filmId={filmId}/>
+            {/* {film ? <h1>{film.title}</h1> : <p>Film not found</p>} */}
+            {film ? (
+                <div>
+                    <h1>{film.title}</h1>
+                    <p>{film.releaseYear}</p>
+                </div>
+            ) : (
+                <p>Film not found</p>
+            )}
         </div>
     );
 }

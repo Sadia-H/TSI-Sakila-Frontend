@@ -19,6 +19,7 @@ export default function AllFilms() {
                 }
             })
             .then((data: Film[]) => {
+                console.log(data);
                 setFilms(data.splice(0, 20));
             })
             .catch(error => {
@@ -39,8 +40,8 @@ export default function AllFilms() {
             <h1>All Films</h1>
             <ul>
                 {films.map(film => (
-                    <li key={film.id}>
-                        <Link to={`/film/${film.id}`}>
+                    <li key={film.filmId}>
+                        <Link to={`/film/${film.filmId}`}>
                             {film.title}
                         </Link>
                     </li>

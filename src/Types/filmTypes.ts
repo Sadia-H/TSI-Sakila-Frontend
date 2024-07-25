@@ -1,5 +1,5 @@
 export interface Film {
-    id: number;
+    filmId: number;
     title: string;
     releaseYear: number;
 }
