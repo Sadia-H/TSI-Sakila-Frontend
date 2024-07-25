@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Navbar from "./Navbar";
 
 interface Film {
     title: string;
@@ -37,6 +38,7 @@ export default function FilmById() {
 
     return (
         <div>
+            <Navbar/>
             {film ? <h1>{film.title}</h1> : <p>Film not found</p>}
         </div>
     );

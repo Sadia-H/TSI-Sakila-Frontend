@@ -1,9 +1,22 @@
+import '../CSS/Navbar.css';
+
+
 export default function Navbar() {
     return (
         <div>
-            <h1>Sakila</h1>
-            <p>Films</p>
-            <a href='/allActors'>View Actors</a>
+          <div className="navbarContainer">
+            <div className="navLogo">
+                <a id="sakilaLogo" href="/">SAKILA</a> 
+            </div>
+            <div id="searchBar">
+                <input type="search" placeholder="Search"/>
+            </div>
+
+            <div className="webPages">
+                <a href="/film-by-id">Film by Id</a>
+                <a href="/all-films">All Films</a>
+            </div>
+          </div>
         </div>
 
     )   
