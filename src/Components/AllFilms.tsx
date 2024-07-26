@@ -71,6 +71,26 @@ export default function AllFilms() {
 
     }
 
+    const handleLanguageChange = (langauge:string) => {
+        let updatedLanguages: string[] = [];
+
+        //checks if language selected is already in selectedLanglist
+        let languageFound = false;
+        for(let i = 0; i<selectedLanguages.length; i++) {
+            if(selectedLanguages[i] === langauge) {
+                languageFound = true;
+            } else {
+                updatedLanguages.push(selectedLanguages[i]);
+            }
+        }
+
+        if (!languageFound) {
+            updatedLanguages.push(langauge);
+        }
+        setSelectedLanguages(updatedLanguages);
+
+    };
+
     // //const isFilmFavourite = favourites.some(favouriteFilm => favouriteFilm.filmId === film.filmId);
     // const heartIcon = isFilmFavourite ? solidHeart : regularHeart;
     // const heartColor = isFilmFavourite ? 'lightcoral' : 'grey'
@@ -83,8 +103,6 @@ export default function AllFilms() {
             <h1>All Films</h1>
             <div className="filmActorContainer">
                 {films.map(film => (
-                
-                        
                         <Link to={`/film/${film.filmId}`} key={film.filmId} className="filmActorBlockLink">
                             <div className="filmActorBlock" >
                                 {film.title}
