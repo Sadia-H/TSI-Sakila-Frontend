@@ -24,7 +24,7 @@ export default function AllActors () {
                 setActors(data.splice(0,20));
                 setLoading(false);
             })
-    }, [])
+    }, []);
 
     if (loading) {
         return <div>Loading...</div>
