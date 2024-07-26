@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import {Film} from "../Types/types";
-import { Actor } from "../Types/types";
-import { Language } from "../Types/types";
-import { useParams } from "react-router-dom";
 
 
 export default function FilmById() {
@@ -51,7 +50,9 @@ export default function FilmById() {
                     <div className = "cast">
                         {film.cast.map((actor) => (
                         <div key={actor.id}>
+                            <Link to={`/actor/${actor.id}`}>
                             {actor.firstName} {actor.lastName}
+                            </Link>
                         </div>
                         ))}
                     </div>

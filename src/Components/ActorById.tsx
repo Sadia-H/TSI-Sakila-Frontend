@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Actor } from "../Types/types";
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
@@ -42,7 +42,9 @@ export default function ActorById () {
                     <div>
                         {actor.films.map((film) => (
                             <div key={film.filmId}>
+                            <Link to={`/film/${film.filmId}`}>
                                 {film.title}
+                            </Link>
                             </div>
                         ))}
                     </div>
