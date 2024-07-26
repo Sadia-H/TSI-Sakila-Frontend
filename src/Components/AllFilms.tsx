@@ -36,15 +36,15 @@ export default function AllFilms() {
             <h1>All Films</h1>
             <div className="filmActorContainer">
                 {films.map(film => (
-                    <div key={film.filmId} className="filmActorBlock">
-                        <Link to={`/film/${film.filmId}`}>
+                    <Link to={`/film/${film.filmId}`} key={film.filmId} className="filmActorBlockLink">
+                        <div className="filmActorBlock" >
                             {film.title}
                             <p>
                             A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies.
                             </p>
                             <p>Release Year: {film.releaseYear}</p>
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>
