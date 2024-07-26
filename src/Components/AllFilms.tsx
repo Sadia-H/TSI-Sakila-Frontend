@@ -32,7 +32,10 @@ export default function AllFilms() {
                 setLoading(false);
             })
 
-        //fetch("https")
+        fetch("http://localhost:8080/languages")
+            .then(response => response.json())
+            .then(data => setLanguages(data))
+            .catch(error => console.log("Error: ", error));
 
         const savedFavourites = localStorage.getItem('favourites');
         if (savedFavourites) {
