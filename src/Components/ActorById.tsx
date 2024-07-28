@@ -36,27 +36,28 @@ export default function ActorById () {
     }
 
     return (
-        <div>
-            <Navbar/>
-            {actor ? (
-                <div>
-                    <h1>{actor.firstName}</h1>
-                    <h1>{actor.lastName}</h1>
-                    <div className="subheading">Starred in:</div>
+        <div className="pageContainer">
+            <Navbar />
+            <div className="page">
+                {actor ? (
+                    <div>
+                        <div className="actorTitle">
+                            <h1>{actor.firstName}</h1>
+                            <h1>{actor.lastName}</h1>
+                        </div>
+                        <div className="subheading">Starred in:</div>
                         <div className="filmList">
                             {actor.films.map((film) => (
-                                <div key={film.filmId}>
-                                <Link to={`/film/${film.filmId}`}>
+                                <Link to={`/film/${film.filmId}`} key={film.filmId}>
                                     {film.title}
                                 </Link>
-                                </div>
                             ))}
                         </div>
                     </div>
-            ) : (
-                <p>Actor not found</p>
-            
-            )}
+                ) : (
+                    <p>Actor not found</p>
+                )}
+            </div>
         </div>
     )
 

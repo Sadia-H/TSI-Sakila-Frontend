@@ -121,7 +121,7 @@ export default function AllFilms() {
                                     <div className="filmDetails">
                                         <h2>{film.title}</h2>
                                         <p>{film.description}</p>
-                                        <p>Release Year: {film.releaseYear}</p>
+                                        <p>Release Year:  {film.releaseYear}</p>
                                     </div>
                                 </div>
                             </Link>
