@@ -5,9 +5,11 @@
     align-items: center; 
     justify-content: space-between; 
     padding: 10px 20px; 
-    border-bottom: 1px solid #bec5cc; 
-    font-family: 'Poppins', sans-serif;
-   
+    border-bottom: 1px solid #6064686c; 
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: Calibri;
+
+
     width: 100%;
     background-color:rgba(0, 0, 0, 0.9);
     color: rgb(255, 255, 255);
@@ -17,21 +19,24 @@
     top: 0;
     left: 0;
     z-index: 1000;
+    padding: 15px 40px;
 
 }
 
 .navLogo {
-    flex: 1;
+    /* flex: 1; */
+   
 }
 
 #sakilaLogo {
     text-decoration: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.5rem;
     color: white;
 }
 
 .searchBar {
-    flex: 2; /* Adjusts width */
+    flex: 2; 
 }
 
 .searchBar input {
@@ -40,7 +45,7 @@
 }
 
 .webPages {
-    flex: 1; /* remaining space for page links */
+    flex: 1;
     display: flex;
     justify-content: flex-end;
     gap: 20px; 
@@ -48,5 +53,6 @@
 
 .webPages a {
     text-decoration: none;
-    color: white
+    color: white;
+
 }

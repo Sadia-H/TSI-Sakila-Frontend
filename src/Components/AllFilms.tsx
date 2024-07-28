@@ -106,8 +106,7 @@ export default function AllFilms() {
                     {films.map(film => (
                             <Link to={`/film/${film.filmId}`} key={film.filmId} className="filmActorBlockLink">
                                 <div className="filmActorBlock" >
-                                    {film.title}
-                                    <button  
+                                <button  
                                         className = "favouriteButton"
                                         onClick={(e) => {
                                             e.preventDefault();
@@ -118,10 +117,12 @@ export default function AllFilms() {
                                             color={favourites.some(fav => fav.filmId === film.filmId) ? 'lightcoral' : 'grey'}
                                         />
                                     </button>
-                                    <p> 
-                                        {film.description}
-                                    </p>
-                                    <p>Release Year: {film.releaseYear}</p>
+                                    <img className="imgPlaceholder" src="src\Images\movie_img_placeholder5.jpg"></img>
+                                    <div className="filmDetails">
+                                        <h2>{film.title}</h2>
+                                        <p>{film.description}</p>
+                                        <p>Release Year: {film.releaseYear}</p>
+                                    </div>
                                 </div>
                             </Link>
                         
