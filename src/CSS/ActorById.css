@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pageContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page {
+    padding: 25px;
+}
+
+.actorTitle {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px; /* Space between the title and the subheading */
+}
+
+.actorTitle h1 {
+    margin: 0;
+    font-size: 24px; /* Adjust as needed */
+}
+
+.subheading {
+    font-size: 18px; /* Adjust as needed */
+    margin-bottom: 10px; /* Space between the subheading and the film list */
+}
+
+.filmList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.filmList a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(114, 128, 128, 0.082);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px; /* Adjust as needed */
+    width: 200px; /* Adjust as needed */
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.filmList a:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}

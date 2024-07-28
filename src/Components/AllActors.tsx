@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Actor } from "../Types/types";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
-import '../CSS/AllFilms.css';
+import '../CSS/AllActors.css';
 
 
 export default function AllActors () {
@@ -21,7 +21,7 @@ export default function AllActors () {
             })
             .then((data: Actor[]) => {
                 console.log(data);
-                setActors(data.splice(0,20));
+                setActors(data);
                 setLoading(false);
             })
     }, []);
@@ -32,18 +32,20 @@ export default function AllActors () {
 
 
     return (
-        <div>
-            <Navbar/>
-            <h1>All Actors</h1>
-            <div className="filmActorContainer">
-                {actors.map(actor => (
-                    <Link to={`/actor/${actor.id}`} key={actor.id} className="filmActorBlockLink">
-                    <div className="filmActorBlock">
-                        {actor.firstName} {actor.lastName}
+            <div className="pageContainer">
+                <Navbar/>
+                <div className="page">
+                    <h1>All Actors</h1>
+                    <div className="actorContainer">
+                        {actors.map(actor => (
+                            <Link to={`/actor/${actor.id}`} key={actor.id} className="filmActorBlockLink">
+                            <div className="actorBlock">
+                                {actor.firstName} {actor.lastName}
+                            </div>
+                        </Link>
+                        ))}
                     </div>
-                </Link>
-                ))}
+                </div>
             </div>
-        </div>
     )
 }

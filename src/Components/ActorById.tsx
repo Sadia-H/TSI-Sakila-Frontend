@@ -2,6 +2,9 @@ import { Link, useParams } from "react-router-dom";
 import { Actor } from "../Types/types";
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import '../CSS/AllFilms.css';
+import '../CSS/ActorById.css';
+
 
 export default function ActorById () {
     const {id} = useParams<{id: string}>();
@@ -39,16 +42,17 @@ export default function ActorById () {
                 <div>
                     <h1>{actor.firstName}</h1>
                     <h1>{actor.lastName}</h1>
-                    <div>
-                        {actor.films.map((film) => (
-                            <div key={film.filmId}>
-                            <Link to={`/film/${film.filmId}`}>
-                                {film.title}
-                            </Link>
-                            </div>
-                        ))}
+                    <div className="subheading">Starred in:</div>
+                        <div className="filmList">
+                            {actor.films.map((film) => (
+                                <div key={film.filmId}>
+                                <Link to={`/film/${film.filmId}`}>
+                                    {film.title}
+                                </Link>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
             ) : (
                 <p>Actor not found</p>
             

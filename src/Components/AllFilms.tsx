@@ -28,7 +28,7 @@ export default function AllFilms() {
             })
             .then((data: Film[]) => {
                 console.log(data);
-                setFilms(data.splice(0, 20));
+                setFilms(data);
                 setLoading(false);
             })
 
