@@ -1,9 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 .navbarContainer {
     display: flex;
     align-items: center; 
     justify-content: space-between; 
     padding: 10px 20px; 
     border-bottom: 1px solid #bec5cc; 
+    font-family: 'Poppins', sans-serif;
+   
+    width: 100%;
+    background-color:rgba(0, 0, 0, 0.9);
+    color: rgb(255, 255, 255);
+    padding: 1rem;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
 }
 
 .navLogo {
@@ -13,6 +27,7 @@
 #sakilaLogo {
     text-decoration: none;
     font-size: 1.5rem;
+    color: white;
 }
 
 .searchBar {
@@ -33,4 +48,5 @@
 
 .webPages a {
     text-decoration: none;
+    color: white
 }

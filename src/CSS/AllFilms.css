@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.pageContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page{
+    padding: 25px;
+}
+
+
 .filmActorContainer {
     display: flex;
     flex-wrap: wrap;
@@ -11,8 +33,21 @@
     padding: 30px;
     border-radius: 8px;
     text-align: center;
+    color: white;
+    font-size: 10px;
+
 }
 
 .filmActorBlock:hover {
     transform: scale(1.05); /* hovering enlarges block */
 }
+
+.favouriteButton {
+    background-color: transparent;
+    border: none;
+}
+
+.favouriteButton:focus {
+    outline: none;
+}
+

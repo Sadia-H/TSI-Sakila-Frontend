@@ -98,33 +98,35 @@ export default function AllFilms() {
     
 
     return (
-        <div>
+        <div className="pageContainer">
             <Navbar/>
-            <h1>All Films</h1>
-            <div className="filmActorContainer">
-                {films.map(film => (
-                        <Link to={`/film/${film.filmId}`} key={film.filmId} className="filmActorBlockLink">
-                            <div className="filmActorBlock" >
-                                {film.title}
-                                <button  
-                                    className = "favouriteButton"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        toggleFavourite(film);
-                                    }}>
-                                    <FontAwesomeIcon
-                                        icon={favourites.some(fav => fav.filmId === film.filmId) ? solidHeart : regularHeart}
-                                        color={favourites.some(fav => fav.filmId === film.filmId) ? 'lightcoral' : 'grey'}
-                                    />
-                                </button>
-                                <p> 
-                                    {film.description}
-                                </p>
-                                <p>Release Year: {film.releaseYear}</p>
-                            </div>
-                        </Link>
-                    
-                 ))}
+            <div className="page">
+                <h1>Browse All Films</h1>
+                <div className="filmActorContainer">
+                    {films.map(film => (
+                            <Link to={`/film/${film.filmId}`} key={film.filmId} className="filmActorBlockLink">
+                                <div className="filmActorBlock" >
+                                    {film.title}
+                                    <button  
+                                        className = "favouriteButton"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            toggleFavourite(film);
+                                        }}>
+                                        <FontAwesomeIcon
+                                            icon={favourites.some(fav => fav.filmId === film.filmId) ? solidHeart : regularHeart}
+                                            color={favourites.some(fav => fav.filmId === film.filmId) ? 'lightcoral' : 'grey'}
+                                        />
+                                    </button>
+                                    <p> 
+                                        {film.description}
+                                    </p>
+                                    <p>Release Year: {film.releaseYear}</p>
+                                </div>
+                            </Link>
+                        
+                    ))}
+                </div>
             </div>
         </div>
     );
