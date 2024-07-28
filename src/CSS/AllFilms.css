@@ -8,9 +8,9 @@ body, html {
     font-family:'Poppins', sans-serif;
 }
 
-
 .pageContainer {
     min-height: 100vh;
+    /* takes 100% height of browser */
     display: flex;
     flex-direction: column;
 }
@@ -29,9 +29,10 @@ body, html {
 
 .filmActorBlock {
     display: flex;
-    flex: 1 1 200px;
-    background-color: rgba(114, 128, 128, 0.082);
+    flex: 1 1 200px; /* can grow and srhink */
+    background-color: rgba(100, 110, 110, 0.696);
     /* padding: 30px; */
+    margin-bottom: 30px;
     border-radius: 8px;
     text-align: center;
     color: white;
@@ -78,7 +79,5 @@ h1 {
     flex: 1;
     text-align: left;
     margin: 0px 15px;
-
-
 }
 

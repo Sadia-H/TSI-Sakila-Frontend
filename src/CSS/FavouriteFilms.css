@@ -31,27 +31,27 @@ h1 {
 
 .filmActorBlock {
     display: flex;
-    flex: 1 1 300px; /* Adjust the width of each block */
+    flex: 1 1 300px; 
     background-color: rgba(114, 128, 128, 0.082);
     border-radius: 8px;
-    text-align: left; /* Align text to the left */
-    color: white; /* Ensure text color is white */
+    text-align: left; 
+    color: white; 
     font-size: 10px;
     position: relative;
-    height: 140px; /* Adjust height as needed */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for transform */
+    height: 140px;
+    transition: transform 0.3s ease-in-out; 
 }
 
 .filmActorBlockLink {
     text-decoration: none;
-    color: inherit; /* Inherit the color from parent element */
+    color: inherit; 
     display: flex;
     flex: 1;
 }
 
 .filmActorBlock:hover {
-    transform: scale(1.05); /* Slightly enlarge the block on hover */
-    background-color: rgba(114, 128, 128, 0.1); /* Change background color on hover */
+    transform: scale(1.05); 
+    background-color: rgba(114, 128, 128, 0.1); 
 }
 
 .filmActorBlock:hover .filmActorBlockLink {

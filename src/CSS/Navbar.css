@@ -1,12 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
 .navbarContainer {
     display: flex;
     align-items: center; 
     justify-content: space-between; 
     padding: 10px 20px; 
     border-bottom: 1px solid #606468d6; 
-    /* font-family: 'Poppins', sans-serif; */
     font-family: Calibri;
 
 

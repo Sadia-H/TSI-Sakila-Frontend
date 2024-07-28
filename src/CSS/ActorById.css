@@ -17,16 +17,16 @@ body, html {
 }
 
 .actorTitle {
-    margin-bottom: 20px; /* Space between the title and the subheading */
+    margin-bottom: 20px;
 }
 
 .actorTitle h1 {
     margin: 0;
-    font-size: 24px; /* Adjust as needed */
+    font-size: 24px; 
 }
 
 .subheading {
-    font-size: 18px; /* Adjust as needed */
+    font-size: 18px;
     margin-bottom: 15px; 
 
 }
@@ -45,17 +45,17 @@ body, html {
 
 .filmActorBlock {
     display: flex;
-    flex: 1 1 400px; /* Adjust width to fit the container */
+    flex: 1 1 400px; 
     background-color: rgba(114, 128, 128, 0.082);
     border-radius: 8px;
-    overflow: hidden; /* Ensure content does not overflow */
-    height: 140px; /* Adjust height as needed */
+    overflow: hidden; 
+    height: 140px; 
 }
 
 .imgPlaceholder {
     height: 100%;
     width: 90px;
-    object-fit: cover; /* Ensure image covers the area */
+    object-fit: cover;
 }
 
 .filmDetails {
@@ -68,16 +68,16 @@ body, html {
 .imgPlaceholder {
     height: 100%;
     width: 90px;
-    object-fit: cover; /* Ensures image is covered properly */
+    object-fit: cover; 
 }
 
 .filmDetails h2 {
     margin: 0;
-    font-size: 18px; /* Adjust as needed */
+    font-size: 18px;
 }
 
 .filmDetails p {
-    margin: 5px 0; /* Adjust spacing between paragraphs */
+    margin: 5px 0;
 }
 
 .favouriteButton {

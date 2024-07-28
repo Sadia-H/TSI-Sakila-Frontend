@@ -2,35 +2,35 @@ import { Link, useParams } from "react-router-dom";
 import { Actor } from "../Types/types";
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import '../CSS/AllFilms.css'; // Ensure this CSS includes styling for the film list
-import '../CSS/ActorById.css'; // Ensure this CSS includes styling for the actor details page
+import '../CSS/AllFilms.css';
+import '../CSS/ActorById.css';
 
 export default function ActorById() {
+    // extracts id from url
     const { id } = useParams<{ id: string }>();
     const [actor, setActor] = useState<Actor | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchActor = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/actor-responses/${id}`);
-                if (response.ok) {
-                    const data: Actor = await response.json();
+        const fetchActor = () => {
+            fetch(`http://localhost:8080/actor-responses/${id}`)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        console.error("Failed to fetch actor. Status:", response.status);
+                        return null; 
+                    }
+                })
+                .then((data: Actor | null) => {
                     setActor(data);
-                } else {
-                    console.log("Failed to fetch actor: ", response.status);
-                    setActor(null); // Ensure actor is null if the fetch fails
-                }
-            } catch (error) {
-                console.error("Error fetching actor:", error);
-                setActor(null);
-            } finally {
-                setLoading(false);
-            }
+                    setLoading(false);
+                })
         };
-
+    
         fetchActor();
     }, [id]);
+    
 
     if (loading) {
         return <div>Loading...</div>;

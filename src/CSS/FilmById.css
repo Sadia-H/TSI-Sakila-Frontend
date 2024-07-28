@@ -9,7 +9,8 @@ body, html {
 }
 
 .pageContainer {
-    min-height: 100vh;
+    min-height: 100vh; 
+    /* takes 100% height of browser */
     display: flex;
     flex-direction: column;
 }
@@ -18,36 +19,36 @@ body, html {
     padding: 25px;
 }
 
-/* Scoped styles for FilmById page only */
 .filmByIdPage .filmDetails {
-    max-width: 600px; /* Limit width for better readability */
-    margin: 0 auto; /* Center align the details block */
+    max-width: 600px; 
+    margin: 0 auto; 
 }
 
 .filmByIdPage .filmDetails h1 {
-    margin-bottom: 20px; /* Space below the title */
-    font-size: 2rem; /* Adjust as needed */
-    font-weight: 600; /* Bold title */
+    margin-bottom: 20px; 
+    font-size: 2rem; 
+    font-weight: 600; 
 }
 
 .filmByIdPage .filmDetails p {
-    margin: 10px 0; /* Space between paragraphs */
-    font-size: 16px; /* Adjust as needed */
+    margin: 10px 0; 
+    font-size: 16px; 
 }
 
 .filmByIdPage .filmDetails p::before {
     content: "";
     display: block;
-    border-bottom: 1px solid white; /* White horizontal line */
-    margin: 10px 0px 20px 0px; /* Space above and below the line */
+    border-bottom: 1px solid white; 
+    margin: 10px 0px 20px 0px; 
 }
 
 .filmByIdPage .filmDetails p:first-of-type::before {
-    display: none; /* Remove the line before the first paragraph */
+    /* before the first p element so no top border */
+    display: none; 
 }
 
 .filmByIdPage .filmDetails p span {
-    font-weight: 600; /* Bold subheading */
+    font-weight: 600;
 }
 
 .filmByIdPage .cast {
@@ -55,26 +56,26 @@ body, html {
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
-    margin-top: 20px; /* Space above the cast section */
+    margin-top: 20px; 
 }
 
 .filmByIdPage .cast div {
-    flex: 1 1 200px; /* Adjust width to fit the container */
+    flex: 1 1 200px; 
     background-color: rgba(114, 128, 128, 0.082);
     border-radius: 8px;
     padding: 10px;
     text-align: center;
     color: white;
-    font-size: 14px; /* Adjust as needed */
+    font-size: 14px; 
 }
 
 .filmByIdPage .cast a {
     text-decoration: none;
     color: white;
-    display: block; /* Ensure full block clickable */
+    display: block; 
 }
 
 .filmByIdPage .cast a:hover {
-    color: lightblue; /* Color change on hover */
-    text-decoration: underline; /* Optional underline on hover */
+    color: lightblue;
+    text-decoration: underline; 
 }

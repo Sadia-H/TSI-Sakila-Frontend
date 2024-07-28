@@ -16,7 +16,6 @@ function App() {
         <Route path='/all-actors' element = {<AllActors/>} />
         <Route path='/actor/:id' element={<ActorById/>} />
         <Route path='/favourite-films' element={<FavouriteFilms/>}/>
-
       </Routes>
 
     </BrowserRouter>

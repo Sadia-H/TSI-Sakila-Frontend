@@ -10,16 +10,18 @@ body, html {
 
 h1 {
     margin: 0;
-    padding: 2rem 2rem 0 2rem;
+    padding: 32px 32px 0 30px;
     text-align: center;
 }
 
+
+
 .actorContainer {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* allows block to wrap onto another line */
     gap: 16px;
     justify-content: center;
-    padding: 2rem;
+    padding: 32px;
 }
 
 .filmActorBlockLink {
@@ -28,17 +30,20 @@ h1 {
     display: flex;
 }
 
+.actorBlock h2 {
+    margin: 0;
+}
+
 .actorBlock {
     background-color: rgba(114, 128, 128, 0.082);
     border-radius: 8px;
     text-align: center;
-    color: white;
     font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 140px; /* Fixed height */
-    width: 200px; /* Fixed width */
+    height: 140px; 
+    width: 200px; 
     padding: 10px;
     transition: background-color 0.3s, transform 0.3s;
     box-sizing: border-box;
@@ -49,6 +54,4 @@ h1 {
     background-color: rgba(114, 128, 128, 0.1);
 }
 
-.actorBlock h2 {
-    margin: 0;
-}
+

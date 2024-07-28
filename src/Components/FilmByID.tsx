@@ -18,7 +18,7 @@ export default function FilmById() {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        console.error("Failed to fetch film. Status:", response.status);
+                        console.error("Failed to fetch film.", response.status);
                         return null; 
                     }
                 })
@@ -29,7 +29,7 @@ export default function FilmById() {
         };
 
         fetchFilm();
-    }, [filmId]);
+    }, [filmId]); //reruns when the filmId changes
 
     if (loading) {
         return <div>Loading...</div>;

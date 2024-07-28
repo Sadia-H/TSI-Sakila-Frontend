@@ -37,7 +37,7 @@ export default function FavouriteFilms () {
                             </div>
                         ))
                     ) : (
-                        <p>No favourite films found.</p>
+                        <p>No favourite films.</p>
                     )}
                 </div>
             </div>

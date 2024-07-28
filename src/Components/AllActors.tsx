@@ -10,12 +10,13 @@ export default function AllActors () {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        // makes HTTP request 
         fetch("http://localhost:8080/actor-responses")
             .then(response => {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    console.log("Failed to fetch list of actors. Status: ", response);
+                    console.log("Failed to fetch list of actors.", response);
                     return [];
                 }
             })

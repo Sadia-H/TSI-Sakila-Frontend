@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Film } from "../Types/types";
 import { Link } from "react-router-dom";
+import { Film } from "../Types/types";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
@@ -22,7 +22,7 @@ export default function AllFilms() {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    console.log("Failed to fetch list of films. Status:", response.status);
+                    console.log("Failed to fetch list of films.", response.status);
                     return []; 
                 }
             })
@@ -32,10 +32,10 @@ export default function AllFilms() {
                 setLoading(false);
             })
 
-        fetch("http://localhost:8080/languages")
-            .then(response => response.json())
-            .then(data => setLanguages(data))
-            .catch(error => console.log("Error: ", error));
+        // fetch("http://localhost:8080/languages")
+        //     .then(response => response.json())
+        //     .then(data => setLanguages(data))
+        //     .catch(error => console.log("Error: ", error));
 
         const savedFavourites = localStorage.getItem('favourites');
         if (savedFavourites) {
@@ -71,51 +71,46 @@ export default function AllFilms() {
 
     }
 
-    const handleLanguageChange = (langauge:string) => {
-        let updatedLanguages: string[] = [];
+    // const handleLanguageChange = (langauge:string) => {
+    //     let updatedLanguages: string[] = [];
 
-        //checks if language selected is already in selectedLanglist
-        let languageFound = false;
-        for(let i = 0; i<selectedLanguages.length; i++) {
-            if(selectedLanguages[i] === langauge) {
-                languageFound = true;
-            } else {
-                updatedLanguages.push(selectedLanguages[i]);
-            }
-        }
+    //     //checks if language selected is already in selectedLanglist
+    //     let languageFound = false;
+    //     for(let i = 0; i<selectedLanguages.length; i++) {
+    //         if(selectedLanguages[i] === langauge) {
+    //             languageFound = true;
+    //         } else {
+    //             updatedLanguages.push(selectedLanguages[i]);
+    //         }
+    //     }
 
-        if (!languageFound) {
-            updatedLanguages.push(langauge);
-        }
-        setSelectedLanguages(updatedLanguages);
+    //     if (!languageFound) {
+    //         updatedLanguages.push(langauge);
+    //     }
+    //     setSelectedLanguages(updatedLanguages);
 
-    };
-
-    // //const isFilmFavourite = favourites.some(favouriteFilm => favouriteFilm.filmId === film.filmId);
-    // const heartIcon = isFilmFavourite ? solidHeart : regularHeart;
-    // const heartColor = isFilmFavourite ? 'lightcoral' : 'grey'
+    // };
     
-    
-
     return (
         <div className="pageContainer">
             <Navbar/>
             <div className="page">
                 <h1>Browse All Films</h1>
                 <div className="filmActorContainer">
+                    {/* loops through films array */}
                     {films.map(film => (
                             <Link to={`/film/${film.filmId}`} key={film.filmId} className="filmActorBlockLink">
                                 <div className="filmActorBlock" >
-                                <button  
-                                        className = "favouriteButton"
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            toggleFavourite(film);
-                                        }}>
-                                        <FontAwesomeIcon
-                                            icon={favourites.some(fav => fav.filmId === film.filmId) ? solidHeart : regularHeart}
-                                            color={favourites.some(fav => fav.filmId === film.filmId) ? 'lightcoral' : 'grey'}
-                                        />
+                                    <button  
+                                            className = "favouriteButton"
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                toggleFavourite(film);
+                                            }}>
+                                            <FontAwesomeIcon
+                                                icon={favourites.some(favourite => favourite.filmId === film.filmId) ? solidHeart : regularHeart}
+                                                color={favourites.some(favourite => favourite.filmId === film.filmId) ? 'lightcoral' : 'grey'}
+                                            />
                                     </button>
                                     <img className="imgPlaceholder" src="src\Images\movie_img_placeholder5.jpg"></img>
                                     <div className="filmDetails">
