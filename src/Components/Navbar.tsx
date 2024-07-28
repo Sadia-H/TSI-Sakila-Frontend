@@ -7,7 +7,7 @@ export default function Navbar () {
         <div>
           <div className="navbarContainer">
             <div className="navLogo">
-                <a id="sakilaLogo" href="/">SAKILA</a> 
+                <a id="sakilaLogo" href="/all-films">SAKILA</a> 
             </div>
             {/* <div id="searchBar">
                 <input type="search" placeholder="Search"/>

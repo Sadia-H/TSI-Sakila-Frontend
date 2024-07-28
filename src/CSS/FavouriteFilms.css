@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    padding: 40px;
+}
+
+.pageContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page {
+    padding: 25px;
+}
+
+.filmActorContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.filmActorBlock {
+    display: flex;
+    flex: 1 1 300px; /* Adjust the width of each block */
+    background-color: rgba(114, 128, 128, 0.082);
+    border-radius: 8px;
+    text-align: left; /* Align text to the left */
+    color: white; /* Ensure text color is white */
+    font-size: 10px;
+    position: relative;
+    height: 140px; /* Adjust height as needed */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for transform */
+}
+
+.filmActorBlockLink {
+    text-decoration: none;
+    color: inherit; /* Inherit the color from parent element */
+    display: flex;
+    flex: 1;
+}
+
+.filmActorBlock:hover {
+    transform: scale(1.05); /* Slightly enlarge the block on hover */
+    background-color: rgba(114, 128, 128, 0.1); /* Change background color on hover */
+}
+
+.filmActorBlock:hover .filmActorBlockLink {
+    color: inherit; /* Ensure the color of the link remains unchanged */
+}
+
+.imgPlaceholder {
+    height: 100%;
+    width: 120px; /* Adjust the width of the image */
+    border-radius: 8px 0 0 8px;
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+.filmDetails {
+    padding: 10px;
+    flex: 1;
+}
+
+.filmActorBlockLink h2 {
+    margin: 0; /* Remove margin for better alignment */
+}

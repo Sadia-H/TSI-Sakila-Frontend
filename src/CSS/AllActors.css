@@ -29,12 +29,14 @@ h1 {
     flex-wrap: wrap;
     gap: 1rem; /* Space between the items */
     padding: 2rem;
-    justify-content: center; /
+    justify-content: center; 
+    
 }
 
 .filmActorBlockLink {
     text-decoration: none;
     color: white;
+   background-color: rgba(62, 52, 52, 0.313);
 }
 
 .actorBlock {
@@ -42,13 +44,14 @@ h1 {
     border-radius: 8px;
     text-align: center;
     color: white;
-    font-size: 10px;
+    font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 80px;
     width: 100px; 
     transition: background-color 0.3s;
+ 
 
 }
 
