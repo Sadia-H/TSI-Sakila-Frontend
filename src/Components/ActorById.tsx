@@ -14,7 +14,8 @@ export default function ActorById() {
 
     useEffect(() => {
         const fetchActor = () => {
-            fetch(`${API_BASE_URL}/actor-responses/${id}`)
+            // fetch(`${API_BASE_URL}/actor-responses/${id}`)
+            fetch(`http://localhost:8080/actor-responses/${id}`)
                 .then(response => {
                     if (response.ok) {
                         return response.json();
