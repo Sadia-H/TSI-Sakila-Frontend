@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import '../CSS/AllFilms.css';
 import '../CSS/ActorById.css';
-import { API_BASE_URL } from "../config";
+// import { API_BASE_URL } from "../config";
 
 export default function ActorById() {
     // extracts id from url
