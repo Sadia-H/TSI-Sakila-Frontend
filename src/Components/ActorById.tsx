@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import '../CSS/AllFilms.css';
 import '../CSS/ActorById.css';
+import { API_BASE_URL } from "../config";
 
 export default function ActorById() {
     // extracts id from url
@@ -13,7 +14,7 @@ export default function ActorById() {
 
     useEffect(() => {
         const fetchActor = () => {
-            fetch(`http://localhost:8080/actor-responses/${id}`)
+            fetch(`${API_BASE_URL}/actor-responses/${id}`)
                 .then(response => {
                     if (response.ok) {
                         return response.json();
