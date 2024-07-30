@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import {Film} from "../Types/types";
 import '../CSS/FilmById.css';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export default function FilmById() {
@@ -13,7 +14,8 @@ export default function FilmById() {
 
     useEffect(() => {
         const fetchFilm = () => {
-            fetch(`http://13.42.103.58/api/partialFilms/${filmId}`)
+            // fetch(`http://13.42.103.58/api/partialFilms/${filmId}`)
+            fetch(`${apiUrl}/api/partialFilms/${filmId}`)
             // fetch(`http://localhost:8080/partialFilms/${filmId}`)
                 .then(response => {
                     if (response.ok) {
