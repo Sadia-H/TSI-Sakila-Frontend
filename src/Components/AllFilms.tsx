@@ -9,6 +9,7 @@ import Navbar from "./Navbar";
 import '../CSS/AllFilms.css';
 
 export default function AllFilms() {
+    const apiUrl = import.meta.env.VITE_API_URL;
     const [films, setFilms] = useState<Film[]>([]);
     const [loading, setLoading] = useState(true);
     const [favourites, setFavourites] = useState<Film[]>([]);
@@ -17,7 +18,9 @@ export default function AllFilms() {
     // const [sortOrder, setSortOrder] = useState<'asc'|'desc'>('asc');
 
     useEffect(() => {
-        fetch("http://localhost:8080/partialFilms")
+        fetch(`${apiUrl}/partialFilms`)
+
+        // fetch("http://localhost:8080/api/partialFilms")
             .then(response => {
                 if (response.ok) {
                     return response.json();

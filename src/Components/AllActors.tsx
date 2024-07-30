@@ -8,10 +8,13 @@ import '../CSS/AllActors.css';
 export default function AllActors () {
     const [actors, setActors] = useState<Actor[]>([]);
     const [loading, setLoading] = useState(true);
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         // makes HTTP request 
-        fetch("http://localhost:8080/actor-responses")
+         fetch(`${apiUrl}/actor-responses`)
+
+        // fetch("http://localhost:8080/api/actor-responses")
             .then(response => {
                 if (response.ok) {
                     return response.json();

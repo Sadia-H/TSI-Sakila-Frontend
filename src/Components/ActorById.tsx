@@ -7,6 +7,8 @@ import '../CSS/ActorById.css';
 // import { API_BASE_URL } from "../config";
 
 export default function ActorById() {
+    const apiUrl = import.meta.env.VITE_API_URL;
+
     // extracts id from url
     const { id } = useParams<{ id: string }>();
     const [actor, setActor] = useState<Actor | null>(null);
@@ -14,8 +16,8 @@ export default function ActorById() {
 
     useEffect(() => {
         const fetchActor = () => {
-            //  fetch(`${API_BASE_URL}/actor-responses/${id}`)
-            fetch(`http://localhost:8080/actor-responses/${id}`)
+            fetch(`${apiUrl}/actor-responses/${id}`)
+            // fetch(`http://localhost:8080/actor-responses/${id}`)
                 .then(response => {
                     if (response.ok) {
                         return response.json();

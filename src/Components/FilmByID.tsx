@@ -16,7 +16,7 @@ export default function FilmById() {
     useEffect(() => {
         const fetchFilm = () => {
             // fetch(`http://13.42.103.58/api/partialFilms/${filmId}`)
-            fetch(`${apiUrl}/api/partialFilms/${filmId}`)
+            fetch(`${apiUrl}/partialFilms/${filmId}`)
             // fetch(`http://localhost:8080/api/partialFilms/${filmId}`)
                 .then(response => {
                     if (response.ok) {
