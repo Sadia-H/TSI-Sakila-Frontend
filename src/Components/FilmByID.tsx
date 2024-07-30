@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import {Film} from "../Types/types";
 import '../CSS/FilmById.css';
-const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export default function FilmById() {
     const {filmId} = useParams<{filmId: string}>();
     const [film, setFilm] = useState<Film | null>(null); 
     const [loading, setLoading] = useState(true);
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchFilm = () => {
