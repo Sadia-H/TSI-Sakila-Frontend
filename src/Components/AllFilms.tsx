@@ -12,9 +12,9 @@ export default function AllFilms() {
     const [films, setFilms] = useState<Film[]>([]);
     const [loading, setLoading] = useState(true);
     const [favourites, setFavourites] = useState<Film[]>([]);
-    const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
-    const [languages, setLanguages] = useState<string[]>([]);
-    const [sortOrder, setSortOrder] = useState<'asc'|'desc'>('asc');
+    // const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
+    // const [languages, setLanguages] = useState<string[]>([]);
+    // const [sortOrder, setSortOrder] = useState<'asc'|'desc'>('asc');
 
     useEffect(() => {
         fetch("http://localhost:8080/partialFilms")
