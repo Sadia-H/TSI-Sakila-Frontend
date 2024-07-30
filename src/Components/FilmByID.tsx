@@ -11,12 +11,13 @@ export default function FilmById() {
     const [film, setFilm] = useState<Film | null>(null); 
     const [loading, setLoading] = useState(true);
     const apiUrl = import.meta.env.VITE_API_URL;
+    console.log('API URL:', apiUrl);
 
     useEffect(() => {
         const fetchFilm = () => {
             // fetch(`http://13.42.103.58/api/partialFilms/${filmId}`)
             fetch(`${apiUrl}/api/partialFilms/${filmId}`)
-            // fetch(`http://localhost:8080/partialFilms/${filmId}`)
+            // fetch(`http://localhost:8080/api/partialFilms/${filmId}`)
                 .then(response => {
                     if (response.ok) {
                         return response.json();
