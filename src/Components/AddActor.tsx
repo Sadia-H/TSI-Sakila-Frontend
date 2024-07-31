@@ -1,19 +1,46 @@
 import { FormEvent, useState } from "react"
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
-
+import '../CSS/AddActor.css';
 
 
 export default function AddActor() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const [firstNameError, setFirstNameError] = useState("");
+    const [lastNameError, setLastNameError] = useState("");
+    
     const navigate = useNavigate();
-
     const apiUrl = import.meta.env.VITE_API_URL;
+
+    const validateInputs = () => {
+        let isValid = true;
+        if (firstName.trim() === "") {
+            setFirstNameError("Please enter the first name.");
+            isValid = false;
+        } else {
+            setFirstNameError("");
+        }
+
+        if (lastName.trim() === "") {
+            setLastNameError("Please enter the last name.");
+            isValid = false;
+        } else {
+            setLastNameError("");
+        }
+        return isValid;
+    }
+
+
+
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>):void => {
         event.preventDefault();
+
+        if(!validateInputs()) {
+            return;
+        }
 
         fetch(`${apiUrl}/actors` , {
             method: 'POST',
@@ -59,6 +86,11 @@ export default function AddActor() {
                         value={firstName} 
                         onChange = {(e) => setFirstName(e.target.value)}  
                     />
+                    {firstNameError && 
+                    <div className="errorMessage">
+                        {firstNameError}
+                    </div>}
+
                 </label>
                 <label>Last Name
                 <input 
@@ -67,8 +99,12 @@ export default function AddActor() {
                         value={lastName} 
                         onChange = {(e) => setLastName(e.target.value)}  
                     />
+                     {lastNameError && 
+                     <div className="errorMessage">
+                        {lastNameError}
+                     </div>}
                 </label>
-                <button type="submit">Submit</button>
+                <button type="submit" id="addActorButton">Add Actor</button>
             </form>
 
             {successMessage && (
