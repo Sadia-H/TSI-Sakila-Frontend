@@ -1,12 +1,15 @@
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useState } from "react"
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function AddActor() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [submitted, setSubmitted] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
+    const navigate = useNavigate();
+
     const apiUrl = import.meta.env.VITE_API_URL;
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>):void => {
@@ -28,9 +31,12 @@ export default function AddActor() {
             }
             return response.json();
         })
-        .then(() => {
-            setSuccessMessage("Actor has been added!");
-            setTimeout(() => setSuccessMessage(""), 3000);
+        .then((data) => {
+            const id = data.id;
+            setSuccessMessage("Actor added successfully!");
+            setTimeout(() => {
+                navigate(`/actor/${id}`);
+            }, 1000); 
         })
         .catch((error) => {
             console.log("Failed to add actor", error.message);
@@ -43,41 +49,34 @@ export default function AddActor() {
 
     return(
         <div>
-        <Navbar/>
-        <h1>Add Actor</h1>
-        <form onSubmit={handleSubmit}>
-            <label>First Name
+            <Navbar/>
+            <h1>Add Actor</h1>
+            <form onSubmit={handleSubmit}>
+                <label>First Name
+                    <input 
+                        type="text" 
+                        placeholder="First Name"
+                        value={firstName} 
+                        onChange = {(e) => setFirstName(e.target.value)}  
+                    />
+                </label>
+                <label>Last Name
                 <input 
-                    type="text" 
-                    placeholder="First Name"
-                    value={firstName} 
-                    onChange = {(e) => setFirstName(e.target.value)}  
-                />
-            </label>
-            <label>Last Name
-            <input 
-                    type="text" 
-                    placeholder="Last Name"
-                    value={lastName} 
-                    onChange = {(e) => setLastName(e.target.value)}  
-                />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
-        {submitted && (
-        <div>
-          <h2>Submitted Information:</h2>
-          <p>First Name: {firstName}</p>
-          <p>Last Name: {lastName}</p>
-        </div>
-    )}
+                        type="text" 
+                        placeholder="Last Name"
+                        value={lastName} 
+                        onChange = {(e) => setLastName(e.target.value)}  
+                    />
+                </label>
+                <button type="submit">Submit</button>
+            </form>
 
-{successMessage && (
-                <div>
-                    <p>{successMessage}</p>
-                </div>
-            )}
-      
+            {successMessage && (
+                    <div>
+                        <p>{successMessage}</p>
+                    </div>
+                )}
+        
         </div>
     )
 }
