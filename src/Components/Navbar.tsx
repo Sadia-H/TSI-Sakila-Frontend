@@ -16,6 +16,7 @@ export default function Navbar () {
             <div className="webPages">
                 <Link to ="/all-films">All Films</Link>
                 <Link to ="/all-actors">All Actors</Link>
+                <Link to ="/add-actor">Add Actor</Link>
                 <Link to ="/favourite-films">Favourite Films</Link>
             </div>
           </div>

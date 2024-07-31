@@ -6,6 +6,7 @@ import FilmById from './Components/FilmByID'
 import AllActors from './Components/AllActors'
 import ActorById from './Components/ActorById'
 import FavouriteFilms from './Components/FavouriteFIlms'
+import AddActor from './Components/AddActor'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/all-actors' element = {<AllActors/>} />
         <Route path='/actor/:id' element={<ActorById/>} />
         <Route path='/favourite-films' element={<FavouriteFilms/>}/>
+        <Route path='/add-actor' element={<AddActor/>}/>
       </Routes>
 
     </BrowserRouter>
