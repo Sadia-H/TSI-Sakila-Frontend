@@ -27,7 +27,7 @@ export default function FavouriteFilms () {
                         favourites.map(film => (
                             <div key={film.filmId} className="filmActorBlock">
                                 <Link to={`/film/${film.filmId}`} className="filmActorBlockLink">
-                                    <img className="imgPlaceholder" src="src/Images/movie_img_placeholder5.jpg" alt={film.title} />
+                                    <img className="imgPlaceholder" src="/Images/movie_img_placeholder5.jpg" alt={film.title} />
                                     <div className="filmDetails">
                                         <h2>{film.title}</h2>
                                         <p>{film.description}</p>
