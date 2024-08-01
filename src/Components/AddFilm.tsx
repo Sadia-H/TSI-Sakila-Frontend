@@ -1,14 +1,16 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../CSS/AddFilm.css'
 import Navbar from './Navbar'
-import { useNavigate } from 'react-router-dom';
+import { Language } from '../Types/types';
 
 
 export default function AddFilm() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [releaseYear, setReleaseYear] = useState("");
-    const [language, setLanguage] = useState("");
+    const [languages, setLanguages] = useState<Language[]>([]);
+    const [selectedLanguage, setSelectedLanguage] = useState<string>('');
     const [length, setLength] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [titleError, setTitleError] = useState("");
@@ -19,6 +21,15 @@ export default function AddFilm() {
 
     const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_API_URL;
+
+    useEffect(() => {
+        fetch(`${apiUrl}/languages`)
+            .then(response => response.json())
+            .then((data: Language[]) => setLanguages(data))
+            .catch(error => console.error("Error fetching languages: ", error));
+    }, []);
+
+
 
     const validateInputs = () => {
         let isValid = true;
@@ -63,42 +74,56 @@ export default function AddFilm() {
                         </div>}
                 </label>
 
-                <label>Description
-                        <input
+                <label className='descriptionLabel'>Description
+                        <textarea 
                             placeholder="Description"
                             value={description} 
-                            onChange = {(e) => setTitle(e.target.value)}  
+                            onChange = {(e) => setDescription(e.target.value)}  
                         />
-                        {titleError && 
+                        {descriptionError && 
                         <div className="errorMessage">
-                            {titleError}
+                            {descriptionError}
                         </div>}
+                      
                 </label>
+
+                <div className='language'>
+                    <h3>Language</h3>
+                    <div className="radio-group">
+                        {languages.map((language) => (
+                            <label key={language.id}>
+                                <input
+                                    type="radio"
+                                    name="language"
+                                    value={language.name}
+                                    checked={selectedLanguage === language.name}
+                                    onChange={(e) => setSelectedLanguage(e.target.value)}
+                                />
+                                {language.name}
+                            </label>
+                        ))}
+                    </div>
+                </div>
 
                 <label>Release Year
                         <input 
                             type="text" 
                             placeholder="E"
                             value={releaseYear} 
-                            onChange = {(e) => setTitle(e.target.value)}  
+                            onChange = {(e) => setReleaseYear(e.target.value)}  
                         />
-                        {titleError && 
-                        <div className="errorMessage">
-                            {titleError}
-                        </div>}
+                        
                 </label>
 
-                <label>Language
+               
+                <label>Length
                         <input 
                             type="text" 
-                            placeholder="Title"
-                            value={title} 
-                            onChange = {(e) => setTitle(e.target.value)}  
+                            placeholder="Length"
+                            value={length} 
+                            onChange = {(e) => setLength(e.target.value)}  
                         />
-                        {titleError && 
-                        <div className="errorMessage">
-                            {titleError}
-                        </div>}
+                       
                 </label>
 
 
