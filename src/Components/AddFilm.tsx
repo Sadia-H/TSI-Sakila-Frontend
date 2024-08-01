@@ -25,10 +25,11 @@ export default function AddFilm() {
     useEffect(() => {
         fetch(`${apiUrl}/languages`)
             .then(response => response.json())
-            .then((data: Language[]) => setLanguages(data))
+            .then((data: Language[]) => {
+                setLanguages(data);
+            })
             .catch(error => console.error("Error fetching languages: ", error));
-    }, []);
-
+    }, [apiUrl]);
 
 
     const validateInputs = () => {
@@ -49,7 +50,38 @@ export default function AddFilm() {
             return;
         }
 
-        setSuccessMessage("Film added successfully!");
+        const filmData = {
+            title,
+            description,
+            language: selectedLanguage
+        };
+
+        console.log("Submitting film data:", filmData);
+
+        fetch(`${apiUrl}/films`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(filmData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Successfully added film: ", data);
+
+            //Reset input fileds
+            setTitle("");
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        })
+
+        setSuccessMessage("Film added!");
         setTimeout(() => {
             // navigate(`/actor/${id}`);
         }, 1000); 
@@ -87,11 +119,11 @@ export default function AddFilm() {
                       
                 </label>
 
-                <div className='language'>
+                <div>
                     <h3>Language</h3>
                     <div className="radio-group">
                         {languages.map((language) => (
-                            <label key={language.id}>
+                            <label key={language.languageId}>
                                 <input
                                     type="radio"
                                     name="language"

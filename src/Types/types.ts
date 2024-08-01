@@ -15,7 +15,7 @@ export interface Film {
 }
 
 export interface Language {
-    id: number;
+    languageId: number;
     name: string;
 }
 
