@@ -10,15 +10,23 @@ export default function AddFilm() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [releaseYear, setReleaseYear] = useState("");
-    const [languageId, setLanguageId] = useState<number | null>(null);
     const [length, setLength] = useState("");
     const [rentalDuration, setRentalDuration] = useState("");
     const [rentalRate, setRentalRate] = useState("");
     const [replacementCost, setReplacementCost] = useState("");
-    const [actors, setActors] = useState<Actor[]>([]);
-    const [actorIds, setActorIds] = useState<number[]>([]);
+
+
     const [languages, setLanguages] = useState<Language[]>([]);
     const [selectedLanguage, setSelectedLanguage] = useState<string>('');
+
+    //To select actors
+    const [actors, setActors] = useState<Actor[]>([]);
+    const [actorIds, setActorIds] = useState<number[]>([]);
+    const [selectedActors, setSelectedActors] = useState<Actor[]>([]);
+    const [filteredActors, setFilteredActors] = useState<Actor[]>([]);
+    const [searchTerm, setSearchTerm] = useState("");
+
+    //Messages for errors or successful submission
     const [successMessage, setSuccessMessage] = useState("");
     const [titleError, setTitleError] = useState("");
     const [descriptionError, setDescriptionError] = useState("");
@@ -46,6 +54,17 @@ export default function AddFilm() {
             .catch(error => console.error("Error fetching actors: ", error));
 
     }, [apiUrl]);
+
+
+    useEffect(() => {
+        if(searchTerm === "") {
+            setFilteredActors(actors.filter(actor =>
+                actor.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                actor.lastName.toLowerCase().includes(searchTerm.toLowerCase())
+            ));
+        }
+    }, [searchTerm, actors])
+
 
 
     const validateInputs = () => {
@@ -214,15 +233,7 @@ export default function AddFilm() {
                     </div>
                 </div>
 
-                <label>
-                    Actors
-
-                </label>
-
-
-
-
-
+            
                 <button type="submit">Add Film</button>
             </form>
             {successMessage && (
