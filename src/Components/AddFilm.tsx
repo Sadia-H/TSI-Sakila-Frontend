@@ -124,6 +124,59 @@ export default function AddFilm() {
                       
                 </label>
 
+                <label>Release Year
+                        <input 
+                            type="text" 
+                            placeholder="E"
+                            value={releaseYear} 
+                            onChange = {(e) => setReleaseYear(e.target.value)}  
+                        />
+                        
+                </label>
+               
+                <label>Length
+                        <input 
+                            type="text" 
+                            placeholder="Length"
+                            value={length} 
+                            onChange = {(e) => setLength(e.target.value)}  
+                        />
+                       
+                </label>
+
+                <label>
+                    Rental Duration
+                    <input 
+                        type="number"
+                        placeholder="Rental Duration"
+                        value={rentalDuration} 
+                        onChange={(e) => setRentalDuration(e.target.value)}  
+                    />
+                </label>
+
+                <label>
+                    Rental Rate
+                    <input 
+                        type="number"
+                        step="0.01"
+                        placeholder="Rental Rate"
+                        value={rentalRate} 
+                        onChange={(e) => setRentalRate(e.target.value)}  
+                    />
+                </label>
+
+                <label>
+                    Replacement Cost
+                    <input 
+                        type="number"
+                        step="0.01"
+                        placeholder="Replacement Cost"
+                        value={replacementCost} 
+                        onChange={(e) => setReplacementCost(e.target.value)}  
+                    />
+                </label>
+
+
                 <div>
                     <h3>Language</h3>
                     <div className="radio-group">
@@ -142,26 +195,6 @@ export default function AddFilm() {
                     </div>
                 </div>
 
-                <label>Release Year
-                        <input 
-                            type="text" 
-                            placeholder="E"
-                            value={releaseYear} 
-                            onChange = {(e) => setReleaseYear(e.target.value)}  
-                        />
-                        
-                </label>
-
-               
-                <label>Length
-                        <input 
-                            type="text" 
-                            placeholder="Length"
-                            value={length} 
-                            onChange = {(e) => setLength(e.target.value)}  
-                        />
-                       
-                </label>
 
 
 
@@ -171,7 +204,7 @@ export default function AddFilm() {
                     <div>
                         <p>{successMessage}</p>
                     </div>
-                )}
+            )}
         </div>
     )
 }
