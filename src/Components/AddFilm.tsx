@@ -9,16 +9,14 @@ export default function AddFilm() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [releaseYear, setReleaseYear] = useState("");
-    const [languageId, setLanguageId] = useState<Short | null>(null);
+    const [languageId, setLanguageId] = useState<number | null>(null);
     const [length, setLength] = useState("");
     const [rentalDuration, setRentalDuration] = useState("");
     const [rentalRate, setRentalRate] = useState("");
     const [replacementCost, setReplacementCost] = useState("");
     const [actorIds, setActorIds] = useState<number[]>([]);
     const [languages, setLanguages] = useState<Language[]>([]);
-    const [selectedLanguage, setSelectedLanguage] = useState("");
-
-
+    const [selectedLanguage, setSelectedLanguage] = useState<string>('');
     const [successMessage, setSuccessMessage] = useState("");
     const [titleError, setTitleError] = useState("");
     const [descriptionError, setDescriptionError] = useState("");
