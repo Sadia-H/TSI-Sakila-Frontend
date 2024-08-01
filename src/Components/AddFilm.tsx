@@ -66,13 +66,21 @@ export default function AddFilm() {
             return;
         }
 
+        const selectedLanguageId = languages.find(lang => lang.name === selectedLanguage)?.languageId;
+
         const filmData = {
             title,
             description,
-            language: selectedLanguage
+            releaseYear: parseInt(releaseYear, 10),
+            languageId: selectedLanguageId,
+            rentalDuration: parseInt(rentalDuration, 10),
+            rentalRate: parseFloat(rentalDuration),
+            length: parseInt(length, 10),
+            replacementCost: parseFloat(replacementCost),
+            actorIds
         };
 
-        console.log("Submitting film data:", filmData);
+        console.log("Submitted film data:", filmData);
 
         fetch(`${apiUrl}/films`, {
             method: 'POST',
