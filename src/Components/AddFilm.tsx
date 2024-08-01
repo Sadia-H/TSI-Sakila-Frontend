@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import '../CSS/AddFilm.css'
 import Navbar from './Navbar'
 import { Language } from '../Types/types';
@@ -22,19 +22,21 @@ export default function AddFilm() {
     //To select actors
     const [actors, setActors] = useState<Actor[]>([]);
     const [actorIds, setActorIds] = useState<number[]>([]);
-    const [selectedActors, setSelectedActors] = useState<Actor[]>([]);
+    const [actorSearch, setActorSearch] = useState("");
     const [filteredActors, setFilteredActors] = useState<Actor[]>([]);
-    const [searchTerm, setSearchTerm] = useState("");
+    const [selectedActors, setSelectedActors] = useState<Actor[]>([]);
+    // const [filteredActors, setFilteredActors] = useState<Actor[]>([]);
+    // const [searchTerm, setSearchTerm] = useState("");
 
     //Messages for errors or successful submission
     const [successMessage, setSuccessMessage] = useState("");
     const [titleError, setTitleError] = useState("");
-    const [descriptionError, setDescriptionError] = useState("");
+    //const [descriptionError, setDescriptionError] = useState("");
 
     // const [rating, setRating] = useState("");
     // const [specialFeatures, setSpecialFeatures] = useState("");
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
@@ -50,21 +52,19 @@ export default function AddFilm() {
             .then((data: Actor[]) => {
                 console.log("Actor data: ", data);
                 setActors(data);
+                setFilteredActors(data); 
             })
             .catch(error => console.error("Error fetching actors: ", error));
 
     }, [apiUrl]);
 
-
     useEffect(() => {
-        if(searchTerm === "") {
-            setFilteredActors(actors.filter(actor =>
-                actor.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                actor.lastName.toLowerCase().includes(searchTerm.toLowerCase())
-            ));
-        }
-    }, [searchTerm, actors])
-
+        setFilteredActors(
+            actors.filter(actor =>
+                `${actor.firstName} ${actor.lastName}`.toLowerCase().includes(actorSearch.toLowerCase())
+            )
+        );
+    }, [actorSearch, actors]);
 
 
     const validateInputs = () => {
@@ -117,8 +117,6 @@ export default function AddFilm() {
         .then(data => {
             console.log("Successfully added film: ", data);
 
-            //Reset input fileds
-            setTitle("");
         })
         .catch(error => {
             console.error("Error:", error);
@@ -130,6 +128,12 @@ export default function AddFilm() {
         }, 1000); 
     }
 
+    const handleActorSelect = (actor: Actor) => {
+        if (!actorIds.includes(actor.id)) {
+            setActorIds([...actorIds, actor.id]);
+            setSelectedActors([...selectedActors, actor]);
+        }
+    };
 
     return(
         <div>
@@ -155,10 +159,10 @@ export default function AddFilm() {
                             value={description} 
                             onChange = {(e) => setDescription(e.target.value)}  
                         />
-                        {descriptionError && 
+                        {/* {descriptionError && 
                         <div className="errorMessage">
                             {descriptionError}
-                        </div>}
+                        </div>} */}
                       
                 </label>
 
@@ -233,7 +237,45 @@ export default function AddFilm() {
                     </div>
                 </div>
 
-            
+                <div>
+                    <h3>Actors</h3>
+                    <input 
+                        type="text"
+                        placeholder="Search for actors"
+                        value={actorSearch}
+                        onChange={(e) => setActorSearch(e.target.value)}
+                    />
+                    {actorSearch && (
+                        <div className="actor-list">
+                            {filteredActors.map((actor) => (
+                                <div 
+                                    key={actor.id} 
+                                    onClick={() => handleActorSelect(actor)}
+                                    style={{
+                                        cursor: 'pointer', 
+                                    }}
+                                >
+                                    {actor.firstName} {actor.lastName}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    
+                    {selectedActors.length > 0 && (
+                        <div>                            
+                                {selectedActors.map((actor) => (
+                                    <div key={actor.id}>
+                                        {actor.firstName} {actor.lastName}
+                                    </div>
+                                ))}
+                        
+                        </div>
+                    )}
+                </div>
+
+
+
+
                 <button type="submit">Add Film</button>
             </form>
             {successMessage && (
