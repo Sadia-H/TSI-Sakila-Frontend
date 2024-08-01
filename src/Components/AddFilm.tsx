@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../CSS/AddFilm.css'
 import Navbar from './Navbar'
 import { Language } from '../Types/types';
+import { Actor } from '../Types/types';
 
 
 export default function AddFilm() {
@@ -14,6 +15,7 @@ export default function AddFilm() {
     const [rentalDuration, setRentalDuration] = useState("");
     const [rentalRate, setRentalRate] = useState("");
     const [replacementCost, setReplacementCost] = useState("");
+    const [actors, setActors] = useState<Actor[]>([]);
     const [actorIds, setActorIds] = useState<number[]>([]);
     const [languages, setLanguages] = useState<Language[]>([]);
     const [selectedLanguage, setSelectedLanguage] = useState<string>('');
@@ -34,6 +36,15 @@ export default function AddFilm() {
                 setLanguages(data);
             })
             .catch(error => console.error("Error fetching languages: ", error));
+
+        fetch(`${apiUrl}/actor-responses`)
+            .then(response => response.json())
+            .then((data: Actor[]) => {
+                console.log("Actor data: ", data);
+                setActors(data);
+            })
+            .catch(error => console.error("Error fetching actors: ", error));
+
     }, [apiUrl]);
 
 
@@ -194,6 +205,12 @@ export default function AddFilm() {
                         ))}
                     </div>
                 </div>
+
+                <label>
+                    Actors
+
+                </label>
+
 
 
 
