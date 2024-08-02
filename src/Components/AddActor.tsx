@@ -60,7 +60,7 @@ export default function AddActor() {
         })
         .then((data) => {
             const id = data.id;
-            setSuccessMessage("Actor added successfully!");
+            setSuccessMessage("Actor added!");
             setTimeout(() => {
                 navigate(`/actor/${id}`);
             }, 1000); 

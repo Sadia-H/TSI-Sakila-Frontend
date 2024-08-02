@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../CSS/AddFilm.css'
 import Navbar from './Navbar'
 import { Language } from '../Types/types';
@@ -25,8 +25,7 @@ export default function AddFilm() {
     const [actorSearch, setActorSearch] = useState("");
     const [filteredActors, setFilteredActors] = useState<Actor[]>([]);
     const [selectedActors, setSelectedActors] = useState<Actor[]>([]);
-    // const [filteredActors, setFilteredActors] = useState<Actor[]>([]);
-    // const [searchTerm, setSearchTerm] = useState("");
+    const [showSearchResults, setShowSearchResults] = useState(true);
 
     //Messages for errors or successful submission
     const [successMessage, setSuccessMessage] = useState("");
@@ -36,7 +35,7 @@ export default function AddFilm() {
     // const [rating, setRating] = useState("");
     // const [specialFeatures, setSpecialFeatures] = useState("");
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
@@ -116,23 +115,39 @@ export default function AddFilm() {
         })
         .then(data => {
             console.log("Successfully added film: ", data);
-
+            const filmId = data.filmId;
+            setSuccessMessage("Film added!");
+            setTimeout(() => {
+                navigate(`/film/${filmId}`);
+            }, 1000); 
         })
         .catch(error => {
             console.error("Error:", error);
         })
-
-        setSuccessMessage("Film added!");
-        setTimeout(() => {
-            // navigate(`/actor/${id}`);
-        }, 1000); 
     }
 
+   
+
     const handleActorSelect = (actor: Actor) => {
+
+        //if actor has not already been selected, added to array
         if (!actorIds.includes(actor.id)) {
             setActorIds([...actorIds, actor.id]);
             setSelectedActors([...selectedActors, actor]);
+
+            // Hide search results when actor is selected
+            setShowSearchResults(false);
         }
+
+    };
+
+    const handleActorRemove = (actorId: number) => {
+        setActorIds(actorIds.filter(id => id !== actorId));
+        setSelectedActors(selectedActors.filter(actor => actor.id !== actorId));
+    };
+
+    const handleSearchBarFocus = () => {
+        setShowSearchResults(true);
     };
 
     return(
@@ -168,8 +183,8 @@ export default function AddFilm() {
 
                 <label>Release Year
                         <input 
-                            type="text" 
-                            placeholder="E"
+                            type="number" 
+                            placeholder="Year"
                             value={releaseYear} 
                             onChange = {(e) => setReleaseYear(e.target.value)}  
                         />
@@ -178,7 +193,7 @@ export default function AddFilm() {
                
                 <label>Length
                         <input 
-                            type="text" 
+                            type="number" 
                             placeholder="Length"
                             value={length} 
                             onChange = {(e) => setLength(e.target.value)}  
@@ -239,20 +254,21 @@ export default function AddFilm() {
 
                 <div>
                     <h3>Actors</h3>
-                    <input 
+                    <input
                         type="text"
                         placeholder="Search for actors"
                         value={actorSearch}
                         onChange={(e) => setActorSearch(e.target.value)}
+                        onFocus={handleSearchBarFocus}
                     />
-                    {actorSearch && (
+                    {showSearchResults && actorSearch && (
                         <div className="actor-list">
                             {filteredActors.map((actor) => (
                                 <div 
                                     key={actor.id} 
                                     onClick={() => handleActorSelect(actor)}
                                     style={{
-                                        cursor: 'pointer', 
+                                        cursor: 'pointer',
                                     }}
                                 >
                                     {actor.firstName} {actor.lastName}
@@ -264,9 +280,10 @@ export default function AddFilm() {
                     {selectedActors.length > 0 && (
                         <div>                            
                                 {selectedActors.map((actor) => (
-                                    <div key={actor.id}>
+                                     <div key={actor.id} className="selected-actor">
                                         {actor.firstName} {actor.lastName}
-                                    </div>
+                                        <span className="remove-actor" onClick={() => handleActorRemove(actor.id)}>x</span>
+                                     </div>
                                 ))}
                         
                         </div>
