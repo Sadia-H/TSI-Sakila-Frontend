@@ -82,6 +82,7 @@ export default function AddActor() {
                 <label>First Name
                     <input 
                         type="text" 
+                        id="firstName"
                         placeholder="First Name"
                         value={firstName} 
                         onChange = {(e) => setFirstName(e.target.value)}  
@@ -95,6 +96,7 @@ export default function AddActor() {
                 <label>Last Name
                 <input 
                         type="text" 
+                        id="lastName"
                         placeholder="Last Name"
                         value={lastName} 
                         onChange = {(e) => setLastName(e.target.value)}  
@@ -108,7 +110,7 @@ export default function AddActor() {
             </form>
 
             {successMessage && (
-                    <div>
+                    <div id="successMessage">
                         <p>{successMessage}</p>
                     </div>
                 )}
