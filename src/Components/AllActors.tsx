@@ -42,11 +42,16 @@ export default function AllActors () {
                     <h1>All Actors</h1>
                     <div className="actorContainer">
                         {actors.map(actor => (
-                            <Link to={`/actor/${actor.id}`} key={actor.id} className="filmActorBlockLink">
-                            <div className="actorBlock">
+                            <Link 
+                                to={`/actor/${actor.id}`} 
+                                key={actor.id} 
+                                className="filmActorBlockLink"
+                                data-testid={`actor-link-${actor.id}`}
+                            >
+                            <div className="actorBlock" data-testid={`actor-link-${actor.id}`}>
                                 {actor.firstName} {actor.lastName}
                             </div>
-                        </Link>
+                            </Link>
                         ))}
                     </div>
                 </div>
