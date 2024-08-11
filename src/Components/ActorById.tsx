@@ -48,6 +48,9 @@ export default function ActorById() {
                     <div>
                         <div className="actorTitle">
                             <h1>{actor.firstName} {actor.lastName}</h1>
+                            <button className="deleteButton">
+                                Delete
+                            </button>
                         </div>
                         <div className="subheading">Starred in:</div>
                         <div className="filmActorContainer">

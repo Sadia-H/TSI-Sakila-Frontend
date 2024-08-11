@@ -17,7 +17,22 @@ body, html {
 }
 
 .actorTitle {
+    margin-top: 10px;
     margin-bottom: 20px;
+    position: relative;
+}
+
+.deleteButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px 10px;
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 .actorTitle h1 {
