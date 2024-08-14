@@ -11,10 +11,7 @@ export default function AllActors () {
     const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
-        // makes HTTP request 
          fetch(`${apiUrl}/actor-responses`)
-
-        // fetch("http://localhost:8080/api/actor-responses")
             .then(response => {
                 if (response.ok) {
                     return response.json();

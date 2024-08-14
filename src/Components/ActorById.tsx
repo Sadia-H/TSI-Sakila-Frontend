@@ -17,7 +17,6 @@ export default function ActorById() {
     useEffect(() => {
         const fetchActor = () => {
             fetch(`${apiUrl}/actor-responses/${id}`)
-            // fetch(`http://localhost:8080/actor-responses/${id}`)
                 .then(response => {
                     if (response.ok) {
                         return response.json();
@@ -49,7 +48,7 @@ export default function ActorById() {
                         <div className="actorTitle">
                             <h1>{actor.firstName} {actor.lastName}</h1>
                             <button className="deleteButton">
-                                Delete
+                                Delete Actor
                             </button>
                         </div>
                         <div className="subheading">Starred in:</div>

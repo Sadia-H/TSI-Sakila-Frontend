@@ -21,7 +21,6 @@ function App() {
         <Route path='/add-actor' element={<AddActor/>}/>
         <Route path='/add-film' element={<AddFilm/>}/>
       </Routes>
-
     </BrowserRouter>
         
   
