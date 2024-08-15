@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import '../CSS/AllFilms.css';
 import '../CSS/ActorById.css';
-// import { API_BASE_URL } from "../config";
 
 export default function ActorById() {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -34,7 +33,6 @@ export default function ActorById() {
         fetchActor();
     }, [id]);
     
-
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -47,25 +45,24 @@ export default function ActorById() {
                     <div>
                         <div className="actorTitle">
                             <h1>{actor.firstName} {actor.lastName}</h1>
-                           
                         </div>
-                        {/* <button className="deleteButton">
-                                Delete Actor
-                            </button> */}
                         <div className="subheading">Starred in:</div>
                         <div className="filmActorContainer">
-                            {actor.films.map((film) => (
-                                <Link to={`/film/${film.filmId}`} key={film.filmId} className="filmActorBlockLink">
-                                    <div className="filmActorBlock">
-                                        {/* <img className="imgPlaceholder" src="movie_img_placeholder5.jpg" alt={film.title} /> */}
-                                        <div className="filmDetails">
-                                            <h2>{film.title}</h2>
-                                            <p>{film.description}</p>
-                                            <p>Release Year: {film.releaseYear}</p>
+                            {actor.films.length > 0 ? (
+                                actor.films.map((film) => (
+                                    <Link to={`/film/${film.filmId}`} key={film.filmId} className="filmActorBlockLink">
+                                        <div className="filmActorBlock">
+                                            <div className="filmDetails">
+                                                <h2>{film.title}</h2>
+                                                <p>{film.description}</p>
+                                                <p>Release Year: {film.releaseYear}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Link>
-                            ))}
+                                    </Link>
+                                ))
+                            ) : (
+                                <p>This actor has not starred in any films.</p>
+                            )}
                         </div>
                     </div>
                 ) : (
