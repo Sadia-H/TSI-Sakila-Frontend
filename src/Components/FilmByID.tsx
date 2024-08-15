@@ -50,9 +50,13 @@ export default function FilmById() {
                         <p><span>Release Year:</span> {film.releaseYear}</p>
                         <p><span>Language:</span> {film.language.name}</p>
                         <p><span>Length:</span> {film.length} Minutes</p>
-                        <p><span>Rating:</span> {film.rating}</p>
-                        <p><span>Special Features:</span> {film.specialFeatures}</p>
+                        <p><span>Rental Duration:</span> {film.rentalDuration}</p>
+                        <p><span>Rental Rate:</span> {film.rentalRate}</p>
+                        <p><span>Replacement Cost:</span> {film.replacementCost}</p>
+                        {/* <p><span>Rating:</span> {film.rating}</p> */}
+                        {/* <p><span>Special Features:</span> {film.specialFeatures}</p> */}
                     </div>
+                    <h3>Cast Members:</h3>
                     <div className="cast">
                         {film.cast.map((actor) => (
                             <div key={actor.id}>

@@ -9,10 +9,6 @@ export default function Navbar () {
             <div className="navLogo">
                 <a id="sakilaLogo" href="/all-films">SAKILA</a> 
             </div>
-            {/* <div id="searchBar">
-                <input type="search" placeholder="Search"/>
-            </div> */}
-
             <div className="webPages">
                 <Link to ="/all-films">All Films</Link>
                 <Link to ="/all-actors">All Actors</Link>
@@ -22,7 +18,6 @@ export default function Navbar () {
             </div>
           </div>
         </div>
-
     );
 }
 
